@@ -1,13 +1,9 @@
-<div>
-  {{ if and .IsPage (eq .Params.toc true) }}
-    <div class="section">
-      <header><div class="title">TableOfContents</div></header>
-      <div class="list-default">{{ .TableOfContents }}</div>
-    </div>
-    {{ end }}
+<div data-spy="affix" class="affix">
+    {{ partial "bloc/content/toc" . }}
+    <hr>
 
     <div class="section">
-      <header><div class="title"><b>{{ i18n "latestposts" }}</b></div></header>
+      <header><h4>{{ i18n "latestposts" }}</h4></header>
       <div class="content">
         <ul>
         {{ range first 10 (where (where .Site.Pages "Type" "post") "IsPage" true) }}
